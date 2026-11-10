@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Http;
 Class BcService
 {
     const DOLAR = 'USD';
-    const EURO = 'EUR';
-    
+    CONST EURO = 'EUR';
+
     protected string $baseURL;
 
     public function __construct()
@@ -16,15 +16,14 @@ Class BcService
         $this->baseURL = config('services.bc.url');
     }
 
-    public function getSerie(string $codigoSerie, string $dataInicial, string $dataFinal)
+    public function getSerie(string $codigoSerie, string $data)
     {
         $url = "{$this->baseURL}/dados/serie/bcdata.sgs.{$codigoSerie}/dados";
 
         $response = Http::get($url, 
         [
             'formato'=>'json',
-            'dataInicial' => $dataInicial,
-            'dataFinal' => $dataFinal,
+            'data' => $data,
         ]);
 
         $response->throw(); // lança exceção se der erro HTTP

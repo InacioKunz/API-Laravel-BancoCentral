@@ -11,25 +11,23 @@ use App\Services\SgsService;
 
 class PainelController extends Controller
 {
-  public function index(BcService $bc, SgsService $sgs)
+  public function index(BcService $bc, SgsService $sgs, Request $request)
 {
-    $hoje = date('06/11/2026'); // formato que a API do Bacen pede
+    $data = request()->input('data', date('d-m-Y')); // Obtém a data do parâmetro da requisição ou usa a data atual como padrão
+    $data = date('m-d-Y', strtotime($data)); // Converte a data para o formato Y-m-d, formato API PTAX
+    $dolar = $bc->getCotacaoMoeda(BcService::DOLAR, $data);
+    $euro = $bc->getCotacaoMoeda(BcService::EURO, $data);
 
-    $dolar = $bc->getCotacaoMoeda(BcService::DOLAR, $hoje);
-    $euro = $bc->getCotacaoMoeda(BcService::EURO, $hoje);
+    $data = date('d/m/Y', strtotime($data)); // Formata a data para o formato da API SGS
 
-    $dataInicial = date('01/01/2026');
-    $dataFinal = date('06/11/2026');
-
-    $selic = $sgs->getSerie(SgsService::SELIC, $dataInicial, $dataFinal);
+    $selic = $sgs->getSerie(SgsService::SELIC, $data);
 
 
     return view('painel', [
         'dolar' => $dolar,
         'euro' => $euro,
         'selic' =>  $selic,
-        'dataInicial' => $dataInicial,
-        'dataFinal' => $dataFinal,
+        'data' => $data,
         
     ]);
 }

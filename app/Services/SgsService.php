@@ -8,7 +8,7 @@ Class SgsService
 {
 
     const SELIC = '1178';
-    
+
     protected string $baseURL;
 
     public function __construct()
@@ -16,15 +16,15 @@ Class SgsService
         $this->baseURL = config('services.sgs.url');
     }
 
-    public function getSerie(string $codigoSerie, string $dataInicial, string $dataFinal)
+    public function getSerie(string $codigoSerie, string $data)
     {
         $url = "{$this->baseURL}/dados/serie/bcdata.sgs.{$codigoSerie}/dados";
 
         $response = Http::get($url, 
         [
             'formato'=>'json',
-            'dataInicial' => $dataInicial,
-            'dataFinal' => $dataFinal,
+            'dataInicial' => $data,
+            'dataFinal' => $data,
         ]);
 
         $response->throw(); // lança exceção se der erro HTTP
@@ -33,15 +33,15 @@ Class SgsService
     }
 
     
-    public function getSelic(string $selic, string $dataInicial, string $dataFinal)
+    public function getSelic(string $selic, string $data)
     {
         $url = "{$this->baseURL}/dados/serie/bcdata.sgs.{$selic}/dados";
 
         $response = Http::withoutVerifying()->get($url, [
             'formato'=>'json',
             'selic'=> $selic,
-            'dataInicial' => $dataInicial,
-            'dataFinal' => $dataFinal,
+            'dataInicial' => $data,
+            'dataFinal' => $data,
     ]);
         
         $response->throw();
