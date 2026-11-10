@@ -6,12 +6,14 @@ use Illuminate\Support\Facades\Http;
 
 Class BcService
 {
+    const DOLAR = 'USD';
+    const EURO = 'EUR';
+    
     protected string $baseURL;
 
     public function __construct()
     {
         $this->baseURL = config('services.bc.url');
-        $this->selicURL = config('services.sgs.url');
     }
 
     public function getSerie(string $codigoSerie, string $dataInicial, string $dataFinal)
@@ -45,19 +47,4 @@ Class BcService
 
     return $response->json()['value'] ?? [];
 }
-    public function getSelic(string $selic, string $dataInicial, string $dataFinal)
-    {
-        $url = "{$this->selicURL}/dados/serie/bcdata.sgs.{$selic}/dados";
-
-        $response = Http::withoutVerifying()->get($url, [
-            'formato'=>'json',
-            'selic'=> $selic,
-            'dataInicial' => $dataInicial,
-            'dataFinal' => $dataFinal,
-    ]);
-        
-        $response->throw();
-
-        return $response->json();
-    }
 }
