@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Cotacao extends Model
+{
+    protected $table = 'cotacoes';
+    protected $fillable = [
+        'indicador',
+        'valor',
+        'data',
+    ];
+}

@@ -10,6 +10,9 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('/painel', [PainelController::class, 'index']);
+Route::get('/painel', [PainelController::class, 'view']);
+Route::get('/painel/relatorio', [PainelController::class, 'indicadoresParaJson']);
+
+
 
 

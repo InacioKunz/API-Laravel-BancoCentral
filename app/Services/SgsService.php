@@ -16,21 +16,21 @@ Class SgsService
         $this->baseURL = config('services.sgs.url');
     }
 
-    public function getSerie(string $codigoSerie, string $data)
-    {
-        $url = "{$this->baseURL}/dados/serie/bcdata.sgs.{$codigoSerie}/dados";
+   public function getSerie(string $codigoSerie, string $data)
+{
+    $url = "{$this->baseURL}/dados/serie/bcdata.sgs.{$codigoSerie}/dados";
 
-        $response = Http::get($url, 
-        [
-            'formato'=>'json',
-            'dataInicial' => $data,
-            'dataFinal' => $data,
-        ]);
+    $response = Http::get($url, 
+    [
+        'formato'=>'json',
+        'dataInicial' => $data,
+        'dataFinal' => $data,
+    ]);
 
-        $response->throw(); // lança exceção se der erro HTTP
+    $response->throw();
 
-        return $response->json();
-    }
+    return $response->json();
+}
 
     
     public function getSelic(string $selic, string $data)
@@ -40,12 +40,23 @@ Class SgsService
         $response = Http::withoutVerifying()->get($url, [
             'formato'=>'json',
             'selic'=> $selic,
-            'dataInicial' => $data,
-            'dataFinal' => $data,
+            'dataInicial' => $data,  //A API do SGS espera dois parâmetros para fazer a requisição.
+            'dataFinal' => $data, //A API do SGS espera dois parâmetros para fazer a requisição.
     ]);
         
         $response->throw();
 
         return $response->json();
     }
+
+    public function getUltimoValor(string $codigoSerie)
+{
+    $url = "{$this->baseURL}/dados/serie/bcdata.sgs.{$codigoSerie}/dados/ultimos/1?formato=json&_=" . time();
+
+    $response = Http::get($url);
+
+    $response->throw();
+
+    return $response->json();
+}
 }

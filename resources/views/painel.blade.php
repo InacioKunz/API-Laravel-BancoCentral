@@ -188,9 +188,9 @@
                     @if(count($dolar) > 0)
                         <tr>
                             <td class="indicador">💵 Dólar <span class="badge">USD</span></td>
-                            <td class="valor-principal">R$ {{ number_format($dolar[0]['cotacaoCompra'], 4, ',', '.') }}</td>
-                            <td>R$ {{ number_format($dolar[0]['cotacaoVenda'], 4, ',', '.') }}</td>
-                            <td>{{ $dolar[0]['dataHoraCotacao'] }}</td>
+                            <td class="valor-principal">R$ {{ number_format(end($dolar)['cotacaoCompra'], 4, ',', '.') }}</td>
+                            <td>R$ {{ number_format(end($dolar)['cotacaoVenda'], 4, ',', '.') }}</td>
+                            <td>{{ end($dolar)['dataHoraCotacao'] }}</td>
                         </tr>
                     @else
                         <tr><td colspan="4" class="sem-dado">Sem cotação de dólar disponível para essa data</td></tr>
@@ -199,9 +199,9 @@
                     @if(count($euro) > 0)
                         <tr>
                             <td class="indicador">💶 Euro <span class="badge">EUR</span></td>
-                            <td class="valor-principal">R$ {{ number_format($euro[0]['cotacaoCompra'], 4, ',', '.') }}</td>
-                            <td>R$ {{ number_format($euro[0]['cotacaoVenda'], 4, ',', '.') }}</td>
-                            <td>{{ $euro[0]['dataHoraCotacao'] }}</td>
+                            <td class="valor-principal">R$ {{ number_format(end($euro)['cotacaoCompra'], 4, ',', '.') }}</td>
+                            <td>R$ {{ number_format(end($euro)['cotacaoVenda'], 4, ',', '.') }}</td>
+                            <td>{{ end($euro)['dataHoraCotacao'] }}</td>
                         </tr>
                     @else
                         <tr><td colspan="4" class="sem-dado">Sem cotação de euro disponível para essa data</td></tr>
@@ -216,6 +216,16 @@
                         </tr>
                     @else
                         <tr><td colspan="4" class="sem-dado">Sem Taxa Selic disponível para essa data</td></tr>
+                    @endif
+                    @if(count($ipca) > 0)
+                        <tr>
+                            <td class="indicador">📈 IPCA <span class="badge">mensal</span></td>
+                            <td class="valor-principal">{{ number_format($ipca[0]['valor'], 2, ',', '.') }}%</td>
+                            <td>—</td>
+                            <td>{{ $ipca[0]['data'] }}</td>
+                        </tr>
+                    @else
+                        <tr><td colspan="4" class="sem-dado">Sem IPCA disponível para essa data</td></tr>
                     @endif
                 </tbody>
             </table>

@@ -39,6 +39,5 @@ return [
     ],
     'sgs' => [
         'url' => env('SGS_API')
-    ]
-
+    ],
 ];
