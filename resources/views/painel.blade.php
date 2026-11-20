@@ -9,83 +9,85 @@
         }
 
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #eef2f7 0%, #e2e8f0 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: #f4f5f7;
             margin: 0;
-            padding: 40px 20px;
-            color: #1f2937;
+            padding: 48px 20px;
+            color: #2d2d2d;
             min-height: 100vh;
         }
 
         .container {
-            max-width: 720px;
+            max-width: 760px;
             margin: 0 auto;
         }
 
         .header {
-            text-align: center;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         .header h1 {
-            margin: 0 0 6px;
-            font-size: 28px;
-            color: #111827;
+            margin: 0 0 4px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1a1a;
         }
 
         .header p {
             margin: 0;
-            color: #6b7280;
-            font-size: 14px;
+            color: #767676;
+            font-size: 13px;
         }
 
         .filtro {
             background: #ffffff;
-            border-radius: 14px;
-            padding: 20px 24px;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-            margin-bottom: 24px;
+            border: 1px solid #e3e4e7;
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .filtro label {
-            font-weight: 600;
-            font-size: 14px;
-            color: #374151;
+            font-weight: 500;
+            font-size: 13px;
+            color: #4a4a4a;
         }
 
         .filtro input[type="date"] {
-            padding: 10px 14px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 14px;
+            padding: 7px 10px;
+            border: 1px solid #d4d5d9;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: inherit;
             flex: 1;
-            min-width: 160px;
+            min-width: 150px;
+            color: #2d2d2d;
         }
 
         .filtro button {
-            background: #1d4ed8;
+            background: #2d2d2d;
             color: #fff;
             border: none;
-            padding: 11px 22px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
             cursor: pointer;
-            transition: background 0.2s ease;
+            font-family: inherit;
         }
 
         .filtro button:hover {
-            background: #1e40af;
+            background: #1a1a1a;
         }
 
         .card {
             background: #ffffff;
-            border-radius: 14px;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e3e4e7;
+            border-radius: 6px;
             overflow: hidden;
         }
 
@@ -94,69 +96,69 @@
             border-collapse: collapse;
         }
 
-        thead {
-            background: linear-gradient(135deg, #1d4ed8, #2563eb);
-        }
-
         thead th {
-            color: #ffffff;
-            padding: 16px 18px;
+            background: #fafafb;
+            color: #6b6b6b;
+            padding: 10px 18px;
             text-align: left;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 0.04em;
+            border-bottom: 1px solid #e3e4e7;
         }
 
         tbody td {
-            padding: 16px 18px;
-            border-bottom: 1px solid #f1f5f9;
-            font-size: 15px;
+            padding: 14px 18px;
+            border-bottom: 1px solid #eeeef0;
+            font-size: 14px;
+            color: #2d2d2d;
         }
 
         tbody tr:last-child td {
             border-bottom: none;
         }
 
-        tbody tr:hover {
-            background-color: #f8fafc;
-        }
-
         .indicador {
-            font-weight: 700;
-            color: #1d4ed8;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-weight: 600;
+            color: #1a1a1a;
         }
 
-        .badge {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 999px;
-            background: #dbeafe;
-            color: #1d4ed8;
+        .sigla {
+            color: #9a9a9a;
+            font-weight: 400;
+            font-size: 12px;
+            margin-left: 4px;
         }
 
         .sem-dado {
             text-align: center;
-            color: #9ca3af;
+            color: #9a9a9a;
             font-style: italic;
-            padding: 24px;
+            padding: 20px;
+            font-size: 13px;
         }
 
         .valor-principal {
             font-weight: 600;
-            font-size: 16px;
+            font-size: 14px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .valor-secundario {
+            font-variant-numeric: tabular-nums;
+            color: #4a4a4a;
+        }
+
+        .data-coluna {
+            color: #767676;
+            font-size: 13px;
         }
 
         footer {
-            text-align: center;
-            margin-top: 20px;
+            margin-top: 16px;
             font-size: 12px;
-            color: #9ca3af;
+            color: #9a9a9a;
         }
     </style>
 </head>
@@ -169,7 +171,7 @@
         </div>
 
         <form method="GET" action="{{ url('/api/painel') }}" class="filtro">
-            <label for="data">Data da consulta:</label>
+            <label for="data">Data da consulta</label>
             <input type="date" id="data" name="data" value="{{ request('data', date('Y-m-d')) }}">
             <button type="submit">Consultar</button>
         </form>
@@ -187,10 +189,10 @@
                 <tbody>
                     @if(count($dolar) > 0)
                         <tr>
-                            <td class="indicador">💵 Dólar <span class="badge">USD</span></td>
+                            <td class="indicador">Dólar <span class="sigla">USD</span></td>
                             <td class="valor-principal">R$ {{ number_format(end($dolar)['cotacaoCompra'], 4, ',', '.') }}</td>
-                            <td>R$ {{ number_format(end($dolar)['cotacaoVenda'], 4, ',', '.') }}</td>
-                            <td>{{ end($dolar)['dataHoraCotacao'] }}</td>
+                            <td class="valor-secundario">R$ {{ number_format(end($dolar)['cotacaoVenda'], 4, ',', '.') }}</td>
+                            <td class="data-coluna">{{ date('d/m/Y', strtotime(end($dolar)['dataHoraCotacao'])) }}</td>
                         </tr>
                     @else
                         <tr><td colspan="4" class="sem-dado">Sem cotação de dólar disponível para essa data</td></tr>
@@ -198,10 +200,10 @@
 
                     @if(count($euro) > 0)
                         <tr>
-                            <td class="indicador">💶 Euro <span class="badge">EUR</span></td>
+                            <td class="indicador">Euro <span class="sigla">EUR</span></td>
                             <td class="valor-principal">R$ {{ number_format(end($euro)['cotacaoCompra'], 4, ',', '.') }}</td>
-                            <td>R$ {{ number_format(end($euro)['cotacaoVenda'], 4, ',', '.') }}</td>
-                            <td>{{ end($euro)['dataHoraCotacao'] }}</td>
+                            <td class="valor-secundario">R$ {{ number_format(end($euro)['cotacaoVenda'], 4, ',', '.') }}</td>
+                            <td class="data-coluna">{{ date('d/m/Y', strtotime(end($euro)['dataHoraCotacao'])) }}</td>
                         </tr>
                     @else
                         <tr><td colspan="4" class="sem-dado">Sem cotação de euro disponível para essa data</td></tr>
@@ -209,20 +211,21 @@
 
                     @if(count($selic) > 0)
                         <tr>
-                            <td class="indicador">📊 Selic <span class="badge">a.a.</span></td>
+                            <td class="indicador">Selic <span class="sigla">a.a.</span></td>
                             <td class="valor-principal">{{ number_format($selic[0]['valor'], 2, ',', '.') }}%</td>
-                            <td>—</td>
-                            <td>{{ $selic[0]['data'] }}</td>
+                            <td class="valor-secundario">—</td>
+                            <td class="data-coluna">{{ $selic[0]['data'] }}</td>
                         </tr>
                     @else
                         <tr><td colspan="4" class="sem-dado">Sem Taxa Selic disponível para essa data</td></tr>
                     @endif
+
                     @if(count($ipca) > 0)
                         <tr>
-                            <td class="indicador">📈 IPCA <span class="badge">mensal</span></td>
+                            <td class="indicador">IPCA <span class="sigla">mensal</span></td>
                             <td class="valor-principal">{{ number_format($ipca[0]['valor'], 2, ',', '.') }}%</td>
-                            <td>—</td>
-                            <td>{{ $ipca[0]['data'] }}</td>
+                            <td class="valor-secundario">—</td>
+                            <td class="data-coluna">{{ $ipca[0]['data'] }}</td>
                         </tr>
                     @else
                         <tr><td colspan="4" class="sem-dado">Sem IPCA disponível para essa data</td></tr>
