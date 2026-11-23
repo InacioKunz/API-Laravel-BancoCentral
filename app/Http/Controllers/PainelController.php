@@ -7,6 +7,8 @@ use App\Services\BcService;
 use App\Services\SgsService;
 use App\Services\IpcaService;
 use App\Models\Cotacao;
+use Illuminate\Support\Facades\DB;
+
 
 
 
@@ -69,6 +71,52 @@ class PainelController extends Controller
         $dados = $this->indicadores($bc, $sgs, $ipca);
 
         return response()->json($dados);
+    }
+
+
+    public function consultaVariacao()
+    {
+         $sql = "
+        SELECT
+            a.valor AS valor_inicial,
+            b.valor AS valor_final,
+            ((b.valor - a.valor) / a.valor) * 100 AS variacao_percentual
+        FROM cotacoes a
+        JOIN cotacoes b ON a.indicador = b.indicador
+        WHERE a.indicador = 'USD'
+            AND a.data = ?
+            AND b.data = ?
+            ";
+        return ($sql);
+    }
+
+    public function variacaoIndicadores(Request $request)
+    {
+        $sql = $this->consultaVariacao();
+
+        $dataInicial = $request->input('data_inicial');
+        $dataFinal = $request->input('data_final');
+
+        $resultado = DB::select($sql, [$dataInicial, $dataFinal]);
+
+        return view('variacao', [
+        'resultado' => $resultado[0] ?? null,
+        'dataInicial' => $dataInicial,
+        'dataFinal' => $dataFinal,
+        ]);
+
+    }
+
+    public function variacaoParaJson(Request $request)
+    {
+        $sql = $this->consultaVariacao();
+
+        $dataInicial = $request->input('data_inicial');
+        $dataFinal = $request->input('data_final');
+
+        $resultado = DB::select($sql, [$dataInicial, $dataFinal]);
+        
+        return response()->json($resultado[0] ?? null);
     }
 }
 
