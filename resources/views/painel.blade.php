@@ -145,6 +145,23 @@
             font-variant-numeric: tabular-nums;
         }
 
+        .nav {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .nav a {
+            font-size: 13px;
+            color: #3b5bdb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
         .valor-secundario {
             font-variant-numeric: tabular-nums;
             color: #4a4a4a;
@@ -168,6 +185,10 @@
         <div class="header">
             <h1>Painel de Cotações</h1>
             <p>Dados oficiais do Banco Central do Brasil</p>
+        </div>
+
+        <div class="nav">
+            <a href="{{ url('/api/painel/variacao') }}">Variação do dólar entre datas →</a>
         </div>
 
         <form method="GET" action="{{ url('/api/painel') }}" class="filtro">

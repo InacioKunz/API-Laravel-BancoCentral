@@ -137,6 +137,21 @@
             font-size: 12px;
             color: #9a9a9a;
         }
+
+        .nav {
+            margin-bottom: 20px;
+        }
+
+        .nav a {
+            font-size: 13px;
+            color: #3b5bdb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -145,6 +160,10 @@
         <div class="header">
             <h1>Variação do Dólar</h1>
             <p>Calcula a variação percentual entre duas datas, direto no banco de dados</p>
+        </div>
+
+        <div class="nav">
+            <a href="{{ url('/api/painel') }}">← Voltar para o painel</a>
         </div>
 
         <form method="GET" action="{{ url('/api/painel/variacao') }}" class="filtro">
